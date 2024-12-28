@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TokoController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,9 +18,16 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/admin', function () {
+    return view('user.admin');
+});
 // Route::get('/user', function () {
 //     return view('user.index');
 // });
+
+Route::get('/toko', [TokoController::class, 'index'])->name('toko');
+Route::get('/tokos', [TokoController::class, 'index'])->name('toko.index');
+
 
 Route::get('/user', [UserController::class, 'index'])->name('user');
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
