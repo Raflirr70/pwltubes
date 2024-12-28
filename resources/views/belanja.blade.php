@@ -81,7 +81,6 @@
                                 <button class="w-[80%] h-[30px] text-white bg-blue-600 hover:bg-blue-700 rounded-md font-semibold">
                                     <p class="font"> Beli Sekarang </p>
                                 </button>
-
                             </div>
                         </div>
                     </div>
