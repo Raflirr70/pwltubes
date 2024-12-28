@@ -75,7 +75,7 @@ class UserSeeder extends Seeder
             'Password' => 'password',
         ]);
         User::create([
-            'username' => 'Supervisor1',
+            'username' => 'Supervisor2',
             'firstname' => 'alex',
             'lastname' => 'pablo',
             'id_toko' => 2,
@@ -118,7 +118,7 @@ class UserSeeder extends Seeder
             'lastname' => 'Byakugan',
             'id_toko' => 3,
             'id_role' => 3,
-            'email' => 'supervvisor3@gmail.com',
+            'email' => 'supervisor3@gmail.com',
             'Password' => 'password',
         ]);
         User::create([

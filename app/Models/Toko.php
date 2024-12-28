@@ -12,4 +12,10 @@ class Toko extends Model
         'name',
         'pendapatan',
     ];
+
+    public function users()
+    {
+        return $this->hasMany(User::class);  // Relasi ke User
+    }
 }
+

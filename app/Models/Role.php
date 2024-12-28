@@ -16,8 +16,14 @@ class Role extends Model
      *
      * @var list<string>
      */
+    protected $primaryKey = 'id_role';
     protected $fillable = [
         'id',
         'name'
     ];
+
+    public function users()
+    {
+        return $this->hasMany(User::class);  // Relasi ke User
+    }
 }
