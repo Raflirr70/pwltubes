@@ -5,29 +5,49 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <h1 class="text-2xl font-semibold mb-4">Daftar User</h1>
-
                     {{-- Tabel untuk menampilkan data user --}}
-                    <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-lg">
+                    <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-lg border">
                         <thead>
                             <tr>
-                                <th class="px-4 py-2 border-b">ID</th>
-                                <th class="px-4 py-2 border-b">Nama</th>
-                                <th class="px-4 py-2 border-b">Role</th>
-                                <th class="px-4 py-2 border-b">Cabang</th>
+                                <th class="px-1 py-2 border-r border-b border-gray-300 bg-slate-400 ">ID</th>
+                                <th class="px-4 py-2 border-r border-b border-gray-300 bg-slate-400 ">Nama</th>
+                                <th class="px-4 py-2 border-r border-b border-gray-300 bg-slate-400 ">Role</th>
+                                <th class="px-4 py-2 border-r border-b border-gray-300 bg-slate-400 ">Cabang</th>
+                                <th class="px-4 py-2 border-r border-b border-gray-300 bg-slate-400 ">Email</th>
+                                <th class="px-4 py-2 border-r border-b border-gray-300 bg-slate-400 ">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                        
-                            @foreach ($users as $user)
-                            {{-- @dd($user->role) --}}
-                            {{-- @dd($users); --}}
-                                <tr>
-                                    <td class="px-4 py-2 border-b">{{ $user->id }}</td>
-                                    <td class="px-4 py-2 border-b">{{ $user->firstname }} {{ $user->lastname }}</td>
-                                    <td class="px-4 py-2 border-b">{{ $user->role->name }}</td>
-                                    <td class="px-4 py-2 border-b">{{ $user->toko->name }}</td>
 
-                                </tr>
+                        @php $akun = Auth::user(); @endphp
+                        @php $i = 0; @endphp
+
+                        <tbody>
+                            @foreach ($users as $user)
+                                @if ($user->id != 1 && $akun->id != $user->id)
+                                    @if ($akun->id_role == 1)
+                                        @php $i ++; @endphp
+                                        <tr>
+                                            <td class="px-1 py-2 border-b border-r">{{ $i }}</td>
+                                            <td class="px-4 py-2 border-b border-r">{{ $user->firstname }} {{ $user->lastname }}</td>
+                                            <td class="px-4 py-2 border-b border-r">{{ $user->role->name }}</td>
+                                            <td class="px-4 py-2 border-b border-r">{{ $user->toko->name }}</td>
+                                            <td class="px-4 py-2 border-b border-r">{{ $user->email}}</td>
+                                            <td class="flex justify-center px-4 py-2 border-b border-r"><x-delete-button :action="route('users.destroy', $user->id)" /></td>
+                                        </tr>
+                                    @elseif ($akun->id_role == 2)
+                                        @if ($akun->id_toko == $user->id_toko)
+                                            @php $i ++; @endphp
+                                            <tr>
+                                                <td class="px-1 py-2 border-b border-r ">{{ $i }}</td>
+                                                <td class="px-4 py-2 border-b border-r">{{ $user->firstname }} {{ $user->lastname }}</td>
+                                                <td class="px-4 py-2 border-b border-r">{{ $user->role->name }}</td>
+                                                <td class="px-4 py-2 border-b border-r">{{ $user->toko->name }}</td>
+                                                <td class="px-4 py-2 border-b border-r">{{ $user->email}}</td>
+                                                <td class="flex justify-center px-4 py-2 border-b border-r"><x-delete-button :action="route('users.destroy', $user->id)" /></td>
+                                            </tr>
+                                        @endif
+                                    @endif
+                                @endif
                             @endforeach
                         </tbody>
                     </table>

@@ -22,7 +22,8 @@ Route::get('/dashboard', function () {
 // });
 
 Route::get('/user', [UserController::class, 'index'])->name('user');
-
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

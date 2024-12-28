@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
             'id_toko' => 1,
             'id_role' => 2,
             'email' => 'manager1@gmail.com',
-            'Password' => 'password',
+            'password' => Hash::make('password')
         ]);
         User::create([
             'username' => 'Supervisor1',
@@ -43,7 +43,7 @@ class UserSeeder extends Seeder
             'id_toko' => 1,
             'id_role' => 3,
             'email' => 'supervisor1@gmail.com',
-            'Password' => 'password',
+            'password' => Hash::make('password')
         ]);
         User::create([
             'username' => 'kasir1',
@@ -52,7 +52,7 @@ class UserSeeder extends Seeder
             'id_toko' => 1,
             'id_role' => 4,
             'email' => 'kasir1@gmail.com',
-            'Password' => 'password',
+            'password' => Hash::make('password')
         ]);
         User::create([
             'username' => 'gudang1',
@@ -72,7 +72,7 @@ class UserSeeder extends Seeder
             'id_toko' => 2,
             'id_role' => 2,
             'email' => 'manager2@gmail.com',
-            'Password' => 'password',
+            'password' => Hash::make('password')
         ]);
         User::create([
             'username' => 'Supervisor2',
@@ -81,7 +81,7 @@ class UserSeeder extends Seeder
             'id_toko' => 2,
             'id_role' => 3,
             'email' => 'supervisor2@gmail.com',
-            'Password' => 'password',
+            'password' => Hash::make('password')
         ]);
         User::create([
             'username' => 'kasir2',
@@ -90,7 +90,7 @@ class UserSeeder extends Seeder
             'id_toko' => 2,
             'id_role' => 4,
             'email' => 'kasir2@gmail.com',
-            'Password' => 'password',
+            'password' => Hash::make('password')
         ]);
         User::create([
             'username' => 'gudang2',
@@ -99,7 +99,7 @@ class UserSeeder extends Seeder
             'id_toko' => 2,
             'id_role' => 5,
             'email' => 'gudang2gmail.com',
-            'Password' => 'password',
+            'password' => Hash::make('password')
         ]);
         
         //Toko Cabang bandung
@@ -110,7 +110,7 @@ class UserSeeder extends Seeder
             'id_toko' => 3,
             'id_role' => 2,
             'email' => 'manager3@gmail.com',
-            'Password' => 'password',
+            'password' => Hash::make('password')
         ]);
         User::create([
             'username' => 'Supervisor3',
@@ -119,7 +119,7 @@ class UserSeeder extends Seeder
             'id_toko' => 3,
             'id_role' => 3,
             'email' => 'supervisor3@gmail.com',
-            'Password' => 'password',
+            'password' => Hash::make('password')
         ]);
         User::create([
             'username' => 'kasir3',
@@ -128,7 +128,7 @@ class UserSeeder extends Seeder
             'id_toko' => 3,
             'id_role' => 4,
             'email' => 'kasir3@gmail.com',
-            'Password' => 'password',
+            'password' => Hash::make('password')
         ]);
         User::create([
             'username' => 'gudang3',
@@ -137,7 +137,7 @@ class UserSeeder extends Seeder
             'id_toko' => 3,
             'id_role' => 5,
             'email' => 'gudang3gmail.com',
-            'Password' => 'password',
+            'password' => Hash::make('password')
         ]);
     }
 }

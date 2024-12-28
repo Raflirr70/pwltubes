@@ -43,19 +43,16 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function casts(): array
-    {
+    protected function casts(): array{
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
     }
-    public function role()
-    {
+    public function role(){
         return $this->belongsTo(Role::class, 'id_role');  // Relasi ke Role
     }
-    public function toko()
-    {
+    public function toko(){
         return $this->belongsTo(Toko::class, 'id_toko');  // Relasi ke Toko
     }
 }
