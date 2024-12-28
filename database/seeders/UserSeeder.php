@@ -98,7 +98,7 @@ class UserSeeder extends Seeder
             'lastname' => 'Man',
             'id_toko' => 2,
             'id_role' => 5,
-            'email' => 'gudang2gmail.com',
+            'email' => 'gudang2@gmail.com',
             'password' => Hash::make('password')
         ]);
         
@@ -136,7 +136,36 @@ class UserSeeder extends Seeder
             'lastname' => 'Hyundai',
             'id_toko' => 3,
             'id_role' => 5,
-            'email' => 'gudang3gmail.com',
+            'email' => 'gudang3@gmail.com',
+            'password' => Hash::make('password')
+        ]);
+
+        //pembeli
+        User::create([
+            'username' => 'pebeli1',
+            'firstname' => 'lala',
+            'lastname' => 'papa',
+            'id_toko' => 1,
+            'id_role' => 6,
+            'email' => 'lala@gmail.com',
+            'password' => Hash::make('password')
+        ]);
+        User::create([
+            'username' => 'pebeli2',
+            'firstname' => 'lili',
+            'lastname' => 'pipi',
+            'id_toko' => 2,
+            'id_role' => 6,
+            'email' => 'lili@gmail.com',
+            'password' => Hash::make('password')
+        ]);
+        User::create([
+            'username' => 'pebeli3',
+            'firstname' => 'lulu',
+            'lastname' => 'pupu',
+            'id_toko' => 3,
+            'id_role' => 6,
+            'email' => 'pupu@gmail.com',
             'password' => Hash::make('password')
         ]);
     }
