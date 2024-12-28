@@ -52,7 +52,7 @@ class UserSeeder extends Seeder
             'id_toko' => 1,
             'id_role' => 4,
             'email' => 'gudang1@gmail.com',
-            'Password' => 'password',
+            'password' =>  Hash::make('password'),
         ]);
 
         //Toko Cabang Cianjur
