@@ -32,6 +32,7 @@
                                 <th class="px-4 py-2 border-r border-b border-gray-300 bg-slate-400 ">Nama</th>
                                 <th class="px-4 py-2 border-r border-b border-gray-300 bg-slate-400 ">Pendapatan Kotor</th>
                                 <th class="px-4 py-2 border-r border-b border-gray-300 bg-slate-400 ">Pendapatan Bersih</th>
+                                <th class="px-4 py-2 border-r border-b border-gray-300 bg-slate-400 ">Biaya Hilang</th>
                             </tr>
                         </thead>
 
@@ -44,7 +45,8 @@
                                         @endif
                                         <td class="px-4 py-2 border-b border-r">{{ $toko->name }}</td>
                                         <td class="text-right px-4 py-2 border-b border-r"> {{ $toko->pendapatan}} $</td>
-                                        <td class="text-right px-4 py-2 border-b border-r">{{ $toko->pendapatan_bersih ?? '0.00' }} $</td>
+                                        <td class="text-right px-4 py-2 border-b border-r"> @include('toko.pendapatankotor') $</td>
+                                        <td class="text-right px-4 py-2 border-b border-r"> @include('toko.biayahilang') $</td>
                                     </tr>
                                 @endif
                             @endforeach
