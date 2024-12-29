@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class GudangController extends Controller
 {
     public function index(){
-        $tokos = Gudang::all();
+        $gudangs = Gudang::all();
         return view('gudang.index', compact('gudangs'));
     }
 }

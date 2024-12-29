@@ -17,5 +17,7 @@ class Toko extends Model
     {
         return $this->hasMany(User::class);  // Relasi ke User
     }
+
+    
 }
 
