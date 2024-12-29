@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\BarangController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TokoController;
 use App\Http\Controllers\UserController;
+use App\Models\Barang;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -10,7 +12,8 @@ Route::get('/', function () {
 });
 
 Route::get('/belanja', function () {
-    return view('belanja');
+    $barangs = \App\Models\Barang::all();
+    return view('belanja', compact('barangs'));
 })->name('belanja');
 
 
@@ -24,6 +27,9 @@ Route::get('/admin', function () {
 // Route::get('/user', function () {
 //     return view('user.index');
 // });
+
+Route::get('/barang', [TokoController::class, 'barang'])->name('barang');
+
 
 Route::get('/toko', [TokoController::class, 'index'])->name('toko');
 Route::get('/tokos', [TokoController::class, 'index'])->name('toko.index');

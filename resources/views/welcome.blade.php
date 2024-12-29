@@ -1,3 +1,15 @@
+@if(Auth::check())
+    @if (Auth::user()->id_role==6){
+        <script>
+            window.location.href = "{{ route('belanja') }}";
+        </script>
+    }
+    @endif
+    <script>
+        window.location.href = "{{ route('dashboard') }}";
+    </script>
+@else
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -88,3 +100,4 @@
         </div>
     </body>
 </html>
+@endif
