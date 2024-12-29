@@ -12,5 +12,4 @@
         $totalharusada += $barangs->harga_barang;
     }
     echo $gudang->total_harga - $totalharusada;
-
 ?>

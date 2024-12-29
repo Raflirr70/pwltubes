@@ -14,4 +14,8 @@ class Barang extends Model
         'harga_barang'
     ];
 
+    public function baranggudangs()
+    {
+        return $this->hasMany(BarangGudang::class);
+    }
 }

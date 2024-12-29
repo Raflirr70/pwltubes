@@ -13,4 +13,10 @@ class BarangGudang extends Model
         'id_gudang',
         'jumlah_barang'
     ];
+
+    public function gudang()
+    {
+        return $this->hasMany(Gudang::class);  // Relasi ke Toko
+    }
+
 }

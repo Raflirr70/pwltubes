@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\BarangGudangController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TokoController;
 use App\Http\Controllers\UserController;
@@ -28,11 +29,12 @@ Route::get('/admin', function () {
 //     return view('user.index');
 // });
 
-Route::get('/barang', [TokoController::class, 'barang'])->name('barang');
-
+Route::get('/indexbarang', [BarangController::class, 'indexbarang'])->name('indexbarang');
+Route::get('/indexbaranggudang', [BarangGudangController::class, 'indexbaranggudang'])->name('indexbaranggudang');
 
 Route::get('/toko', [TokoController::class, 'index'])->name('toko');
 Route::get('/tokos', [TokoController::class, 'index'])->name('toko.index');
+Route::get('/barang', [TokoController::class, 'barang'])->name('barang');
 
 
 Route::get('/user', [UserController::class, 'index'])->name('user');

@@ -22,34 +22,48 @@
                     @elseif (Auth::user()->role->id == 2)
                         <h1 class="flex justify-center text-2xl font-semibold mb-4">Toko {{Auth::user()->toko->name}}</h1>
                     @endif
+
+                    
                     {{-- Tabel untuk menampilkan data user --}}
-                    <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-lg">
+                    <table class="min-w-full bg-white border border-gray-600 rounded-lg shadow-lg">
                         <thead>
                             <tr>
                                 @if (Auth::user()->id == 1)
-                                    <th class="px-2 py-2 border-r border-b border-gray-300 bg-slate-400 ">id</th>
+                                    <th class="px-2 py-2 border-r border-b border-gray-600 bg-slate-400 ">id</th>
                                 @endif
-                                <th class="px-4 py-2 border-r border-b border-gray-300 bg-slate-400 ">Nama</th>
-                                <th class="px-4 py-2 border-r border-b border-gray-300 bg-slate-400 ">Pendapatan Kotor</th>
-                                <th class="px-4 py-2 border-r border-b border-gray-300 bg-slate-400 ">Pendapatan Bersih</th>
-                                <th class="px-4 py-2 border-r border-b border-gray-300 bg-slate-400 ">Biaya Hilang</th>
+                                <th class="px-4 py-2 border-r border-b border-gray-600 bg-slate-400 ">Nama</th>
+                                <th class="px-4 py-2 border-r border-b border-gray-600 bg-slate-400 ">Pendapatan Kotor</th>
+                                <th class="px-4 py-2 border-r border-b border-gray-600 bg-slate-400 ">Pendapatan Bersih</th>
+                                <th class="px-4 py-2 border-r border-b border-gray-600 bg-slate-400 ">Biaya Hilang</th>
+                                <th class="px-4 py-2 border-r border-b border-gray-600 bg-slate-400 ">Informasi</th>
                             </tr>
                         </thead>
 
                         <tbody>
+                            @php $total =0 @endphp
                             @foreach ($tokos as $toko)
-                                @if ($toko->id == Auth::user()->id_toko)
+                                @if ($toko->id == Auth::user()->id_toko || Auth::user()->id == 1)
                                     <tr>
                                         @if (Auth::user()->id == 1)
-                                            <td class="flex px-2 py-2 border-r border-b border-r justify-center"> {{$toko->id}}</td>
+                                            <td class="flex px-2 py-2 border-gray-600 border-r border-b justify-center"> {{$toko->id}}</td>
                                         @endif
-                                        <td class="px-4 py-2 border-b border-r">{{ $toko->name }}</td>
-                                        <td class="text-right px-4 py-2 border-b border-r"> {{ $toko->pendapatan}} $</td>
-                                        <td class="text-right px-4 py-2 border-b border-r"> @include('toko.pendapatankotor') $</td>
-                                        <td class="text-right px-4 py-2 border-b border-r"> @include('toko.biayahilang') $</td>
+                                        <td class="px-4 py-2 border-gray-600 border-b border-r">{{ $toko->name }}</td>
+                                        <td class="text-right px-4 py-2 border-gray-600 border-b border-r"> {{ $toko->pendapatan}} $</td>
+                                        <td class="text-right px-4 py-2 border-gray-600 border-b border-r"> @include('toko.pendapatankotor') $</td>
+                                        <td class="text-right px-4 py-2 border-gray-600 border-b border-r"> @include('toko.biayahilang') $</td>
+                                        <td class="text-center px-4 py-2 border-gray-600 border-b border-r"><a href="{{ route('toko.index', $toko->id) }}" class="btn btn-primary bg-green-700 text-white py-1 px-3 rounded-md hover:text-lg">Lihat</a></td>
+                                        @php
+                                            $biayaHilang = view('toko.biayahilang')->render();
+                                            $total += (float) $biayaHilang;
+                                        @endphp 
                                     </tr>
                                 @endif
                             @endforeach
+                            <tr class="bg-green-100">
+                                <td class="px-4 py-2 border-gray-600 border-b border-r text-center" colspan="4">Total</td>
+                                <td class="px-4 py-2 border-gray-600 border-b text-right">100 $</td>
+                                <td class="px-4 py-2 border-gray-600 border-b"></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

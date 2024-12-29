@@ -36,7 +36,7 @@
 
                         <tbody>
                             @foreach ($users as $user)
-                                @if ($user->id != 1 && $akun->id != $user->id)
+                                @if ($user->id != 1 && $akun->id != $user->id && $user->id_role != 6)
                                     @if ($akun->id_role == 1)
                                         @php $i ++; @endphp
                                         <tr>

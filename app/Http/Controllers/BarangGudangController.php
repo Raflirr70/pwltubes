@@ -11,4 +11,11 @@ class BarangGudangController extends Controller
         $baranggudangs = BarangGudang::all();
         return view('baranggudang.index', compact('baranggudangs'));
     }
+
+    public function indexbarang()
+    {
+        $baranggudangs = BarangGudang::all();
+        return view('barang.indexbarang', compact('baranggudangs'));
+    }
+
 }
