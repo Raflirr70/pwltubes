@@ -46,7 +46,6 @@
                                     >
                                         Dashboard
                                     </a>
-                                
                                 @endauth
                             </nav>
                         @endif

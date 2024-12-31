@@ -31,7 +31,7 @@
         </h1>
         
     </div>
-    <div class="flex bg-gray-200 text-gray-800 w-full justify-center">
+    <div class="flex bg-gray-200 text-gray-800 w-full justify-center mb-16">
         <div class="container py-6">
             <!-- Konten Anda -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pl-0 mx-auto">
@@ -93,15 +93,23 @@
             @if (Auth::check())
                 <!-- Tombol Logout -->
                 <div class="flex w-1/5 justify-center items-center">
-                    <button class="flex justify-center items-center text-white font-bold text-xl w-full h-[90%] bg-gray-500 hover:bg-gray-600 rounded-lg mx-[5px]">
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+
+                    <button 
+                        class="flex justify-center items-center text-white font-bold text-xl w-full h-[90%] bg-gray-500 hover:bg-gray-600 rounded-lg mx-[5px]" 
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         Logout
                     </button>
                 </div>    
             @else
                 <!-- Tombol Kembali -->
                 <div class="flex w-1/5 justify-center items-center">
-                    <button class="flex justify-center items-center text-white font-bold text-xl w-full h-[90%] bg-gray-500 hover:bg-gray-600 rounded-lg mx-[5px]">
-                        Logout
+                    <button 
+                        class="flex justify-center items-center text-white font-bold text-xl w-full h-[90%] bg-gray-500 hover:bg-gray-600 rounded-lg mx-[5px]" 
+                        onclick="window.location.href='/'">
+                        Kembali
                     </button>
                 </div>            
             @endif

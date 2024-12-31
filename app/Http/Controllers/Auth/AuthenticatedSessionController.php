@@ -27,10 +27,10 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-        if (Auth::user()->id_role == 1) {
-            return redirect()->intended(route('dashboard'));
-        } else {
+        if (Auth::user()->id_role == 6) {
             return redirect()->intended(route('belanja'));
+        } else {
+            return redirect()->intended(route('dashboard'));
         }
         
     }
