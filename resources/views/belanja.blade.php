@@ -113,19 +113,22 @@
                     </button>
                 </div>            
             @endif
-            <!-- Tombol Beli -->
-            <div class="flex w-3/5 justify-center items-center">
-                <button class="w-full h-[90%] bg-blue-500 text-white font-bold text-xl hover:bg-blue-600 rounded-lg">
-                    Beli
-                </button>
-            </div>
+            @auth
+                
+                <!-- Tombol Beli -->
+                <div class="flex w-3/5 justify-center items-center">
+                    <button class="w-full h-[90%] bg-blue-500 text-white font-bold text-xl hover:bg-blue-600 rounded-lg">
+                        Beli
+                    </button>
+                </div>
 
-            <!-- Tombol Keranjang -->
-            <div class="flex w-1/5 justify-center items-center">
-                <button class="flex justify-center items-center text-gray-700 font-bold text-xl w-full h-[90%] bg-yellow-400 hover:bg-yellow-500 rounded-lg mx-[5px]">
-                    Keranjang
-                </button>
-            </div>
+                <!-- Tombol Keranjang -->
+                <div class="flex w-1/5 justify-center items-center">
+                    <button class="flex justify-center items-center text-gray-700 font-bold text-xl w-full h-[90%] bg-yellow-400 hover:bg-yellow-500 rounded-lg mx-[5px]">
+                        Keranjang
+                    </button>
+                </div>
+            @endauth
         </div>
     </footer>
 
