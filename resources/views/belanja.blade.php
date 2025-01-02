@@ -31,7 +31,7 @@
         </h1>
         
     </div>
-    <div class="flex bg-gray-200 text-gray-800 w-full justify-center mb-16">
+    <div class="flex bg-gray-200 text-gray-800 w-full justify-center pb-16">
         <div class="container py-6">
             <!-- Konten Anda -->
             <form method="POST" action="{{ route('jualbarang') }}">
@@ -40,6 +40,10 @@
                 @php
                     $i = 0;
                 @endphp
+                    @auth
+                        <input type="hidden" name="idtoko" value="{{ Auth::user()->id_toko }}">
+                        <input type="hidden" name="iduser" value="{{ Auth::user()->id }}">
+                    @endauth
                     @foreach ($barangs as $barang)
                         @php
                             $i++;
@@ -58,9 +62,6 @@
                                 <div class="flex flex-row w-full">
                                     <h2 class="text-2xl font-bold">{{ $barang->name }}</h2>
                                     <p class="flex ml-auto mr-4 items-end font-semibold text-sm">{{ $barang->harga_barang }} $</p>
-                                    @auth
-                                    <input type="hidden" name="idtoko" value="{{ Auth::user()->id_toko }}">
-                                    @endauth
                                     <input type="hidden" name="idbarang{{$i}}" value="{{$i}}">
                                     <input type="hidden" name="hargabarang{{$i}}" value="{{$barang->harga_barang}}">
                                 </div>
@@ -93,51 +94,45 @@
                         </div>
                     @endforeach
                     <input type="hidden" name="i" value="{{$i}}">
-                    <div class="fixed bottom-0 h-16 w-full bg-gray-400 rounded-lg">
-                    <div class="flex h-full w-full">
-                        @if (Auth::check())
-                            <!-- Tombol Logout -->
-                            <div class="flex w-1/5 justify-center items-center">
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-
-                                <button 
-                                    class="flex justify-center items-center text-white font-bold text-xl w-full h-[90%] bg-gray-500 hover:bg-gray-600 rounded-lg mx-[5px]" 
-                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    Logout
-                                </button>
-                            </div>    
-                        @else
-                            <!-- Tombol Kembali -->
-                            <div class="flex w-1/5 justify-center items-center">
-                                <button 
-                                    class="flex justify-center items-center text-white font-bold text-xl w-full h-[90%] bg-gray-500 hover:bg-gray-600 rounded-lg mx-[5px]" 
-                                    onclick="window.location.href='/'">
-                                    Kembali
-                                </button>
-                            </div>            
-                        @endif
-                        @auth
-                            
-                            <!-- Tombol Beli -->
-                            <div class="flex w-3/5 justify-center items-center">
-                                <button class="w-full h-[90%] bg-blue-500 text-white font-bold text-xl hover:bg-blue-600 rounded-lg">
-                                    Beli
-                                </button>
-                            </div>
-
-                            <!-- Tombol Keranjang -->
-                            <div class="flex w-1/5 justify-center items-center">
-                                <button class="flex justify-center items-center text-gray-700 font-bold text-xl w-full h-[90%] bg-yellow-400 hover:bg-yellow-500 rounded-lg mx-[5px]">
-                                    Keranjang
-                                </button>
-                            </div>
-                        @endauth
-                    </div>
+                    @auth
+                        <!-- Tombol Beli -->
+                        <div class="fixed bottom-0 left-0 right-0 mx-auto w-3/5 h-16">
+                            <button class="w-full h-[90%] bg-blue-500 text-white font-bold text-xl hover:bg-blue-600 rounded-lg">
+                                Beli
+                            </button>
+                        </div>
+                    @endauth
                 </div>
             </div>
             </form>
+                @if (Auth::check())
+                    <!-- Tombol Logout -->
+                    <div class="fixed h-16 bottom-0 left-5 w-1/6">
+                        <form action="{{ route('logout') }}" method="POST" class="flex justify-center items-center text-white font-bold text-xl w-full h-[90%] bg-gray-500 hover:bg-gray-600 rounded-lg mx-[5px]">
+                            @csrf
+                            <button 
+                                type="submit" 
+                                class="flex justify-center items-center">
+                                Logout
+                            </button>
+                        </form>
+                    </div>   
+                    <!-- Tombol Keranjang -->
+                    <div class="fixed h-16 bottom-0 right-5 w-1/6">
+                        <button class="flex justify-center items-center text-gray-700 font-bold text-xl w-full h-[90%] bg-yellow-400 hover:bg-yellow-500 rounded-lg mx-[5px]">
+                            Keranjang
+                        </button>
+                    </div>
+                @else
+                    <!-- Tombol Kembali -->
+                    <div class="fixed h-16 bottom-0 left-5 w-1/6">
+                        <button 
+                            class="flex justify-center items-center text-white font-bold text-xl w-full h-[90%] bg-gray-500 hover:bg-gray-600 rounded-lg mx-[5px]" 
+                            onclick="window.location.href='/'">
+                            Kembali
+                        </button>
+                    </div>         
+                @endif
         </div>
     </div>
     

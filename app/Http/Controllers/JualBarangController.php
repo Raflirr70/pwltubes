@@ -14,6 +14,7 @@ class JualBarangController extends Controller
         
         $transaksi = Transaksi::create([
             'id_toko'=> $request->idtoko,
+            'id_user'=> $request->iduser,
             'total_barang'=> $request->idtoko,
             'total_harga'=> $request->idtoko,
             
