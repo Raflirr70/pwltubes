@@ -17,6 +17,7 @@ return new class extends Migration
             $table->bigInteger('id_user')->unsigned();
             $table->bigInteger('total_barang')->unsigned();
             $table->integer('total_harga');
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
 
             $table->foreign('id_toko')->references('id')->on('tokos')->onDelete('cascade')->onUpdate('cascade');

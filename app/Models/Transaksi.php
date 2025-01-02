@@ -13,5 +13,6 @@ class Transaksi extends Model
         'id_user',
         'total_barang',
         'total_harga',
+        'status',
     ];
 }

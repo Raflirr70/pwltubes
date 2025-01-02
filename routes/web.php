@@ -5,6 +5,7 @@ use App\Http\Controllers\BarangGudangController;
 use App\Http\Controllers\JualBarangController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TokoController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserController;
 use App\Models\Barang;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,10 @@ Route::get('/admin', function () {
 // Route::get('/user', function () {
 //     return view('user.index');
 // });
+Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi');
+Route::get('/pesanan', [TransaksiController::class, 'pesanan'])->name('pesanan');
+Route::post('/pesanan', [TransaksiController::class, 'terima'])->name('pesananterima');
+Route::post('/pesanandelete', [TransaksiController::class, 'delete'])->name('pesanandelete');
 
 Route::get('/indexbarang', [BarangController::class, 'indexbarang'])->name('indexbarang');
 Route::get('/indexbaranggudang', [BarangGudangController::class, 'indexbaranggudang'])->name('indexbaranggudang');
@@ -48,7 +53,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('jualbarang', [JualBarangController::class, 'create'])
-        ->name('jualbarang');
-    Route::post('jualbarang', [JualBarangController::class, 'store'])->name('jualbarang.store');
+// Route::get('jualbarang', [JualBarangController::class, 'create'])
+//         ->name('jualbarang');
+Route::post('jualbarang', [JualBarangController::class, 'store'])->name('jualbarang.store');
 require __DIR__.'/auth.php';

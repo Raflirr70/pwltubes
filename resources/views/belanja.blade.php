@@ -21,6 +21,10 @@
     </style>
 </head>
 <body>
+    @if (Auth::check())
+        <x-app-layout>
+        </x-app-layout>
+    @endif
     <div class="flex flex-col h-20 w-full justify-center items-center">
         <h1 class="text-3xl font-bold"> Selamat Datang </h1>
         <h1 class="text-xl font-bold">
@@ -117,12 +121,15 @@
                             </button>
                         </form>
                     </div>   
+                    <a href="{{ route('transaksi') }}">
+                        <div class="fixed h-16 bottom-0 right-5 w-1/6">
+                            <button class="flex justify-center items-center text-gray-700 font-bold text-xl w-full h-[90%] bg-yellow-400 hover:bg-yellow-500 rounded-lg mx-[5px]">
+                                Keranjang
+                            </button>
+                        </div>
+                    </a>
                     <!-- Tombol Keranjang -->
-                    <div class="fixed h-16 bottom-0 right-5 w-1/6">
-                        <button class="flex justify-center items-center text-gray-700 font-bold text-xl w-full h-[90%] bg-yellow-400 hover:bg-yellow-500 rounded-lg mx-[5px]">
-                            Keranjang
-                        </button>
-                    </div>
+                    
                 @else
                     <!-- Tombol Kembali -->
                     <div class="fixed h-16 bottom-0 left-5 w-1/6">
