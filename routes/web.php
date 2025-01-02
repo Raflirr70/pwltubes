@@ -32,8 +32,10 @@ Route::get('/admin', function () {
 // });
 Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi');
 Route::get('/pesanan', [TransaksiController::class, 'pesanan'])->name('pesanan');
-Route::post('/pesanan', [TransaksiController::class, 'terima'])->name('pesananterima');
-Route::post('/pesanandelete', [TransaksiController::class, 'delete'])->name('pesanandelete');
+Route::post('/pesanan/terima', [TransaksiController::class, 'terima'])->name('pesananterima');
+Route::post('/pesanan/delete', [TransaksiController::class, 'delete'])->name('pesanandelete');
+
+Route::get('/logpesanan', [TransaksiController::class, 'log'])->name('logpesanan');
 
 Route::get('/indexbarang', [BarangController::class, 'indexbarang'])->name('indexbarang');
 Route::get('/indexbaranggudang', [BarangGudangController::class, 'indexbaranggudang'])->name('indexbaranggudang');
@@ -55,5 +57,8 @@ Route::middleware('auth')->group(function () {
 
 // Route::get('jualbarang', [JualBarangController::class, 'create'])
 //         ->name('jualbarang');
+Route::get('jualbarang', [JualBarangController::class, 'create'])
+        ->name('jualbarang');
 Route::post('jualbarang', [JualBarangController::class, 'store'])->name('jualbarang.store');
+
 require __DIR__.'/auth.php';

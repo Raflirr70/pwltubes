@@ -18,6 +18,14 @@ class TransaksiController extends Controller
         // Kirim data ke view
         return view('transaksi.index', compact('transaksis', 'jualbarangs'));
     }
+    public function log()
+    {
+        $transaksis = Transaksi::where('id_toko', Auth::user()->id_toko)->where('status', 1)->get();
+        
+        $jualbarangs = JualBarang::whereIn('id_transaksi', $transaksis->pluck('id'))->get();
+        
+        return view('transaksi.logpesanan', compact('transaksis', 'jualbarangs'));
+    }
     public function pesanan(){
         $transaksis = Transaksi::where('id_toko', Auth::user()->id_toko)->where('status', 0)->get();
         return view('transaksi.pesanan', compact('transaksis'));
