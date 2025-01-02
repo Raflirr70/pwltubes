@@ -46,7 +46,6 @@
                                     >
                                         Register
                                     </a>
-                                
                                 @endif
                             </nav>
                         @endif

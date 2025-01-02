@@ -62,7 +62,9 @@
                             <tr class="bg-green-100">
                                 <td class="px-4 py-2 border-gray-600 border-b border-r text-center" colspan="4">Total</td>
                                 <td class="px-4 py-2 border-gray-600 border-b text-right">100 $</td>
-                                <td class="px-4 py-2 border-gray-600 border-b"></td>
+                                    @if ($toko->id == Auth::user()->id_role-1)
+                                        <td class="px-4 py-2 border-gray-600 border-b"></td>
+                                    @endif
                             </tr>
                         </tbody>
                     </table>

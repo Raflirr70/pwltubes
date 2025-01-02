@@ -19,4 +19,7 @@ class UserController extends Controller
         // Redirect dengan pesan sukses
         return redirect()->route('users.index')->with('success', 'User deleted successfully.');
     }
+    public function view(){
+        return view('user.tambahpegawai');
+    }
 }

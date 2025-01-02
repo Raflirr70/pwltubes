@@ -16,9 +16,9 @@
     </head>
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col mt-10 items-center pt-6 sm:pt-0 dark:bg-gray-900">
-            <div>
+            {{-- <div>
                 <p style="font-size: 30px" class="font-extrabold">LOGIN TOKO<p>
-            </div>
+            </div> --}}
             <div>
                 
                 <a href="/">

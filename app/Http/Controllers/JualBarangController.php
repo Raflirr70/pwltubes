@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use App\Models\JualBarang;
 use App\Models\Transaksi;
 use Illuminate\Http\RedirectResponse;
@@ -11,7 +12,6 @@ class JualBarangController extends Controller
 {
     public function store(Request $request)
     {
-        
         $transaksi = Transaksi::create([
             'id_toko'=> $request->idtoko,
             'id_user'=> $request->iduser,
@@ -43,6 +43,5 @@ class JualBarangController extends Controller
         ]);
 
         return redirect()->route('belanja')->with('success', 'Transaksi berhasil disimpan.');
-        
     }
 }

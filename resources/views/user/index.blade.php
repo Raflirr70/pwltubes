@@ -75,8 +75,12 @@
         {{-- right card --}}
         <div class="w-1/3 mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg min-h-[460px]">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{-- You can add more content for the right card if needed --}}
+                <div class="mt-12 p-6 text-gray-900 dark:text-gray-100 h-28">
+                    <a
+                        href=" {{ route('tambahpegawai') }} "
+                        class="flex justify-center items-center bg-blue-500 text-white font-bold py-2 px-4 rounded">
+                            Tambah Pegawai
+                    </a>
                 </div>
             </div>
         </div>

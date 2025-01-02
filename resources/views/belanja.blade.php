@@ -109,39 +109,40 @@
                 </div>
             </div>
             </form>
-                @if (Auth::check())
-                    <!-- Tombol Logout -->
-                    <div class="fixed h-16 bottom-0 left-5 w-1/6">
-                        <form action="{{ route('logout') }}" method="POST" class="flex justify-center items-center text-white font-bold text-xl w-full h-[90%] bg-gray-500 hover:bg-gray-600 rounded-lg mx-[5px]">
-                            @csrf
-                            <button 
-                                type="submit" 
-                                class="flex justify-center items-center">
-                                Logout
-                            </button>
-                        </form>
-                    </div>   
-                    <a href="{{ route('transaksi') }}">
-                        <div class="fixed h-16 bottom-0 right-5 w-1/6">
-                            <button class="flex justify-center items-center text-gray-700 font-bold text-xl w-full h-[90%] bg-yellow-400 hover:bg-yellow-500 rounded-lg mx-[5px]">
-                                Keranjang
-                            </button>
-                        </div>
-                    </a>
-                    <!-- Tombol Keranjang -->
-                    
-                @else
-                    <!-- Tombol Kembali -->
-                    <div class="fixed h-16 bottom-0 left-5 w-1/6">
+            @if (Auth::check())
+                <!-- Tombol Logout -->
+                <div class="fixed h-16 bottom-0 left-5 w-1/6">
+                    <form action="{{ route('logout') }}" method="POST" class="flex justify-center items-center text-white font-bold text-xl w-full h-[90%] bg-gray-500 hover:bg-gray-600 rounded-lg mx-[5px]">
+                        @csrf
                         <button 
-                            class="flex justify-center items-center text-white font-bold text-xl w-full h-[90%] bg-gray-500 hover:bg-gray-600 rounded-lg mx-[5px]" 
-                            onclick="window.location.href='/'">
-                            Kembali
+                            type="submit" 
+                            class="flex justify-center items-center">
+                            Logout
                         </button>
-                    </div>         
-                @endif
+                    </form>
+                </div>   
+                <a href="{{ route('transaksi') }}">
+                    <div class="fixed h-16 bottom-0 right-5 w-1/6">
+                        <button class="flex justify-center items-center text-gray-700 font-bold text-xl w-full h-[90%] bg-yellow-400 hover:bg-yellow-500 rounded-lg mx-[5px]">
+                            Keranjang
+                        </button>
+                    </div>
+                </a>
+                <!-- Tombol Keranjang -->
+                
+            @else
+                <!-- Tombol Kembali -->
+                <div class="fixed h-16 bottom-0 left-5 w-1/6">
+                    <button 
+                        class="flex justify-center items-center text-white font-bold text-xl w-full h-[90%] bg-gray-500 hover:bg-gray-600 rounded-lg mx-[5px]" 
+                        onclick="window.location.href='/'">
+                        Kembali
+                    </button>
+                </div>  
+            @endif
         </div>
     </div>
+    
     
 
 
@@ -152,6 +153,7 @@
             <button class="absolute top-2 right-2 bg-black opacity-50 text-white px-2 py-1 rounded" onclick="hideModal()">X</button>
         </div>
     </div>
+    
 
     <script>
         // Fungsi untuk menampilkan modal

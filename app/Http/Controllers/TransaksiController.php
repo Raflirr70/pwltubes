@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use App\Models\JualBarang;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
@@ -21,10 +22,10 @@ class TransaksiController extends Controller
     public function log()
     {
         $transaksis = Transaksi::where('id_toko', Auth::user()->id_toko)->where('status', 1)->get();
-        
         $jualbarangs = JualBarang::whereIn('id_transaksi', $transaksis->pluck('id'))->get();
+        $barangs = Barang::all();
         
-        return view('transaksi.logpesanan', compact('transaksis', 'jualbarangs'));
+        return view('transaksi.logpesanan', compact('transaksis', 'jualbarangs', 'barangs'));
     }
     public function pesanan(){
         $transaksis = Transaksi::where('id_toko', Auth::user()->id_toko)->where('status', 0)->get();

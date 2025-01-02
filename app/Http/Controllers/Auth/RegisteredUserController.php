@@ -44,7 +44,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'id_toko' => $request->kota,
             'password' => Hash::make($request->password),
-            'id_role' => 6
+            'id_role' => 6,
         ]);
 
         event(new Registered($user));
@@ -52,5 +52,27 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect(route('dashboard', absolute: false));
+    }
+    public function storepegawai(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'username' => ['required', 'string', 'max:255'],
+            'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        $user = User::create([
+            'username' => $request->username,
+            'firstname' => $request->firstname,
+            'lastname' => $request->lastname,
+            'email' => $request->email,
+            'id_toko' => $request->kota,
+            'password' => Hash::make($request->password),
+            'id_role' => $request->role,
+        ]);
+
+        return redirect(route('user', absolute: false));
     }
 }

@@ -37,6 +37,8 @@ Route::post('/pesanan/delete', [TransaksiController::class, 'delete'])->name('pe
 
 Route::get('/logpesanan', [TransaksiController::class, 'log'])->name('logpesanan');
 
+Route::get('/tambahpegawai', [UserController::class, 'view'])->name('tambahpegawai');
+
 Route::get('/indexbarang', [BarangController::class, 'indexbarang'])->name('indexbarang');
 Route::get('/indexbaranggudang', [BarangGudangController::class, 'indexbaranggudang'])->name('indexbaranggudang');
 

@@ -15,20 +15,20 @@ class GudangSeeder extends Seeder
     {
         Gudang::create([
             'id_toko' => 1,
-            'jumlah_barang' => 100,
-            'total_harga' => 1000,
+            'jumlah_barang' => 1000,
+            'total_harga' => 10000,
         ]);
 
         Gudang::create([
             'id_toko' => 2,
-            'jumlah_barang' => 100,
-            'total_harga' => 1000,
+            'jumlah_barang' => 1000,
+            'total_harga' => 10000,
         ]);
 
         Gudang::create([
             'id_toko' => 3,
-            'jumlah_barang' => 100,
-            'total_harga' => 1000,
+            'jumlah_barang' => 1000,
+            'total_harga' => 10000,
         ]);
     }
 }

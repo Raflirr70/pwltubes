@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
+        
+    Route::get('registerpegawai', [RegisteredUserController::class, 'create'])
+        ->name('registerpegawai');
 
     Route::post('register', [RegisteredUserController::class, 'store']);
 
@@ -34,6 +37,8 @@ Route::middleware('guest')->group(function () {
     Route::post('reset-password', [NewPasswordController::class, 'store'])
         ->name('password.store');
 });
+
+Route::post('registerpegawai', [RegisteredUserController::class, 'storepegawai']);
 
 Route::middleware('auth')->group(function () {
     Route::get('verify-email', EmailVerificationPromptController::class)

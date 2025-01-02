@@ -16,8 +16,8 @@ class BarangGudangSeeder extends Seeder
         for($i=1;$i<=3;$i++){
             for($ii=1;$ii<=10;$ii++){
                 BarangGudang::create([
-                    'id_barang' => $ii,
                     'id_gudang' => $i,
+                    'id_barang' => $ii,
                     'jumlah_barang' => 100
                 ]);
             }
