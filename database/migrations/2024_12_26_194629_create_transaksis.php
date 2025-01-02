@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_toko')->unsigned();
-            $table->bigInteger('id_barang')->unsigned();
+            $table->bigInteger('total_barang')->unsigned();
             $table->integer('total_harga');
             $table->timestamps();
 
             $table->foreign('id_toko')->references('id')->on('tokos')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('id_barang')->references('id')->on('barangs')->onDelete('cascade')->onUpdate('cascade');
+            
         });
     }
 
