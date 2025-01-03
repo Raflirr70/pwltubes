@@ -42,6 +42,7 @@ Route::post('/pesanan/delete', [TransaksiController::class, 'delete'])->name('pe
 Route::get('/logpesanan', [TransaksiController::class, 'log'])->name('logpesanan');
 
 Route::get('/tambahpegawai', [UserController::class, 'view'])->name('tambahpegawai');
+Route::get('/users/pdf', [UserController::class, 'generatePDF'])->name('users.pdf');
 
 Route::get('/indexbarang', [BarangController::class, 'indexbarang'])->name('indexbarang');
 Route::get('/addbarang', [BarangController::class, 'create'])->name('barang.create');
@@ -70,5 +71,8 @@ Route::middleware('auth')->group(function () {
 Route::get('jualbarang', [JualBarangController::class, 'create'])
         ->name('jualbarang');
 Route::post('jualbarang', [JualBarangController::class, 'store'])->name('jualbarang.store');
+
+
+
 
 require __DIR__.'/auth.php';
