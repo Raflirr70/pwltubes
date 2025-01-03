@@ -65,6 +65,9 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                                @if (Auth::user()->id == 3)
+                                <x-primary-button tag="a" href="{{ route('barang.create') }}">Tambah Barang</x-primary-button>
+                            @endif
                             @endif
                         @endif
                     @endforeach

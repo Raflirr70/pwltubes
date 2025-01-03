@@ -42,6 +42,12 @@
                                 {{ __('Barang') }}
                             </x-nav-link>
                         </div>
+                    @elseif ( Auth::user()->id_role == 3)
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('indexbarang')" :active="request()->routeIs('indexbarang')">
+                                {{ __('Barang') }}
+                            </x-nav-link>
+                        </div>
                     @elseif (Auth::user()->id_role == 4)
                         <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                             <x-nav-link :href="route('pesanan')" :active="request()->routeIs('pesanan')">
@@ -51,6 +57,12 @@
                         <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                             <x-nav-link :href="route('logpesanan')" :active="request()->routeIs('logpesanan')">
                                 {{ __('Log Pesanan') }}
+                            </x-nav-link>
+                        </div>
+                    @elseif ( Auth::user()->id_role == 5)
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('indexbarang')" :active="request()->routeIs('indexbarang')">
+                                {{ __('Barang') }}
                             </x-nav-link>
                         </div>
                     @endif

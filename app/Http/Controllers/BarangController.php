@@ -15,6 +15,32 @@ class BarangController extends Controller
         return view('belanja', compact('barangs'));
     }
 
+    public function create()
+    {
+        return view('barang.create');
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'harga_barang' => 'required|integer',
+        ]);
+
+        Barang::create($validated);
+
+        $notification = array(
+            'message' => 'Data barang berhasil ditambahkan',
+            'alert-type' => 'success'
+        );
+
+        if ($request->save == true) {
+            return redirect()->route('jumlah.create')->with($notification);
+        } else {
+            return redirect()->route('barang.create')->with($notification);
+        }
+    }
+
     public function indexbarang()
     {
         $barangs = Barang::all();
