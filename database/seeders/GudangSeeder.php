@@ -13,22 +13,12 @@ class GudangSeeder extends Seeder
      */
     public function run(): void
     {
-        Gudang::create([
-            'id_toko' => 1,
-            'jumlah_barang' => 1000,
-            'total_harga' => 10000,
-        ]);
-
-        Gudang::create([
-            'id_toko' => 2,
-            'jumlah_barang' => 1000,
-            'total_harga' => 10000,
-        ]);
-
-        Gudang::create([
-            'id_toko' => 3,
-            'jumlah_barang' => 1000,
-            'total_harga' => 10000,
-        ]);
+        for($i=1; $i<=5; $i++){
+            Gudang::create([
+                'id_toko' => $i,
+                'jumlah_barang' => 1000,
+                'total_harga' => 100000,
+            ]);
+        }
     }
 }

@@ -25,5 +25,13 @@ class TokoSeeder extends Seeder
             'name' => 'Bandung',
             'pendapatan' => 0,
         ]);
+        Toko::create([
+            'name' => 'Jakarta',
+            'pendapatan' => 0,
+        ]);
+        Toko::create([
+            'name' => 'Bali',
+            'pendapatan' => 0,
+        ]);
     }
 }

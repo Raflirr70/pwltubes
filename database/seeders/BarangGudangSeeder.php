@@ -13,7 +13,7 @@ class BarangGudangSeeder extends Seeder
      */
     public function run(): void
     {
-        for($i=1;$i<=3;$i++){
+        for($i=1;$i<=5;$i++){
             for($ii=1;$ii<=10;$ii++){
                 BarangGudang::create([
                     'id_gudang' => $i,
