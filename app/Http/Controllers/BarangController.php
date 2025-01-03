@@ -43,9 +43,16 @@ class BarangController extends Controller
 
     public function indexbarang()
     {
-        $barangs = Barang::all();
-        $baranggudangs = BarangGudang::all();
+        if(auth::user()->id != 1){
+            $gudangs = Gudang::where('id_toko', auth::user()->id_toko)->get();
+            $baranggudangs = BarangGudang::where('id_gudang', $gudangs->pluck('id'))->get();
+            $barangs = Barang::all();
+        }else{
+            $gudangs = Gudang::all();
+            $baranggudangs = BarangGudang::all();
+            $barangs = Barang::all();
+        }
 
-        return view('barang.indexbarang', compact('barangs', 'baranggudangs'));
+        return view('barang.indexbarang', compact('barangs', 'baranggudangs', 'gudangs'));
     }
 }

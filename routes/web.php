@@ -19,6 +19,10 @@ Route::get('/belanja', function () {
     return view('belanja', compact('barangs'));
 })->name('belanja');
 
+Route::get('/manager', function () {
+    return view('manager');
+})->name('manager');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
