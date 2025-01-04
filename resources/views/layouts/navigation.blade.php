@@ -59,12 +59,6 @@
                                 {{ __('Log Pesanan') }}
                             </x-nav-link>
                         </div>
-                    @elseif ( Auth::user()->id_role == 5 || Auth::user()->id_role == 9 || Auth::user()->id_role == 13)
-                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                            <x-nav-link :href="route('indexbarang')" :active="request()->routeIs('indexbarang')">
-                                {{ __('Barang') }}
-                            </x-nav-link>
-                        </div>
                     @endif
                 </div>
                 <!-- Settings Dropdown -->
