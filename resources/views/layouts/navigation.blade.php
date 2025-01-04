@@ -42,7 +42,7 @@
                                 {{ __('Barang') }}
                             </x-nav-link>
                         </div>
-                    @elseif ( Auth::user()->id_role == 3)
+                    @elseif (Auth::user()->id == 3 || Auth::user()->id == 7 || Auth::user()->id == 11)
                         <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                             <x-nav-link :href="route('indexbarang')" :active="request()->routeIs('indexbarang')">
                                 {{ __('Barang') }}
@@ -59,7 +59,7 @@
                                 {{ __('Log Pesanan') }}
                             </x-nav-link>
                         </div>
-                    @elseif ( Auth::user()->id_role == 5)
+                    @elseif ( Auth::user()->id_role == 5 || Auth::user()->id_role == 9 || Auth::user()->id_role == 13)
                         <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                             <x-nav-link :href="route('indexbarang')" :active="request()->routeIs('indexbarang')">
                                 {{ __('Barang') }}

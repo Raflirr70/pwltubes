@@ -15,16 +15,7 @@
                         @csrf
                         <div class="max-w-xl">
                             <x-input-label for="id_gudang" value="Gudang" />
-                            <x-select-input id="id_gudang" name="id_gudang" class="mt-1 block w-full" required>
-                                <option value="">Open this select menu</option>
-                                @foreach ($gudangs as $key => $value)
-                                    @if (old('id_gudang') == $key)
-                                        <option value="{{ $key }}" selected>{{ $value }}</option>
-                                    @else
-                                        <option value="{{ $key }}" selected>{{ $value }}</option>
-                                    @endif
-                                @endforeach
-                            </x-select-input>
+                            <x-text-input id="id_gudang" name="id_gudang" value="{{ old('id_gudang', Auth::user()->id_toko) }}" class="mt-1 block w-full" required />
                         </div>
                         <div class="max-w-xl">
                             <x-input-label for="id_barang" value="Barang" />

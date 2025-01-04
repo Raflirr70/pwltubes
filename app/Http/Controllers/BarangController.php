@@ -35,7 +35,7 @@ class BarangController extends Controller
         );
 
         if ($request->save == true) {
-            return redirect()->route('jumlah.create')->with($notification);
+            return redirect()->route('indexbarang')->with($notification);
         } else {
             return redirect()->route('barang.create')->with($notification);
         }

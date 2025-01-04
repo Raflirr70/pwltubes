@@ -46,9 +46,9 @@ Route::get('/users/pdf', [UserController::class, 'generatePDF'])->name('users.pd
 
 Route::get('/indexbarang', [BarangController::class, 'indexbarang'])->name('indexbarang');
 Route::get('/addbarang', [BarangController::class, 'create'])->name('barang.create');
-Route::post('/addjumlah', [BarangController::class, 'store'])->name('barang.store');
+Route::post('/barangstore', [BarangController::class, 'store'])->name('barang.store');
 Route::get('/addjumlah', [BarangGudangController::class, 'create'])->name('jumlah.create');
-Route::post('/indexbarang', [BarangGudangController::class, 'store'])->name('jumlah.store');
+Route::post('/jumlahstore', [BarangGudangController::class, 'store'])->name('jumlah.store');
 Route::get('/indexbaranggudang', [BarangGudangController::class, 'indexbaranggudang'])->name('indexbaranggudang');
 
 Route::get('/toko', [TokoController::class, 'index'])->name('toko');
