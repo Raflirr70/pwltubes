@@ -27,8 +27,16 @@ class BarangController extends Controller
             'harga_barang' => 'required|integer',
         ]);
 
-        Barang::create($validated);
-
+        $id = Barang::create($validated);
+        $gudangs = Gudang::all(); $i=0;
+        foreach($gudangs as $gudang){
+            $i++;
+            BarangGudang::create([
+                'id_barang' => $id->id,
+                'id_gudang' => $i,
+                'jumlah_barang' => 0,
+            ]);
+        }
         $notification = array(
             'message' => 'Data barang berhasil ditambahkan',
             'alert-type' => 'success'
