@@ -1,3 +1,7 @@
+@php
+    use App\Models\BarangGudang;
+    use Illuminate\Support\Facades\Auth;
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +34,9 @@
         <h1 class="text-xl font-bold">
             Di Toserba 
             @if (Auth::check())
-                Cabang {{ Auth::user()->cabang }}
+                Cabang {{ Auth::user()->toko->name }}
+            @else
+                Cabang Cipanas
             @endif
         </h1>
         
@@ -55,9 +61,14 @@
                         <div class="flex items-start border rounded-lg shadow-lg h-28 overflow-hidden bg-white">
                             <!-- Bagian Kiri: Gambar -->
                             <div class="w-2/4">
-                                <img src="{{ asset('asset/pencil.jpeg') }}" alt="Gambar Barang" 
+                                @php 
+                                $lowercaseName = strtolower($barang->name);
+                                $aset = 'asset/'.$lowercaseName.'.jpeg';
+                                
+                                @endphp
+                                <img src="{{ asset($aset) }}" alt="Gambar Barang" 
                                     class="w-full rounded-lg shadow-md cursor-pointer" 
-                                    onclick="showModal('{{ asset('asset/pencil.jpeg') }}')">
+                                    onclick="showModal('{{ asset($aset) }}')">
                             </div>
                             <div class="w-2 h-full bg-gray-400"></div>
                             <div class="w-6 h-full"></div>
@@ -69,8 +80,18 @@
                                     <input type="hidden" name="idbarang{{$i}}" value="{{$i}}">
                                     <input type="hidden" name="hargabarang{{$i}}" value="{{$barang->harga_barang}}">
                                 </div>
-                                
-                                <p class="flex justify-end mr-4 text-green-600 font-semibold text-sm">Stock: Tersedia</p>
+                                @php $stock = 0 @endphp 
+                                @if(Auth::check())
+                                    @php $stock = BarangGudang::where('id_barang', $barang->id)->where('id_gudang', Auth::user()->id_toko)->first()->jumlah_barang @endphp
+                                @else
+                                    @php $stock = BarangGudang::where('id_barang', $barang->id)->where('id_gudang', 1)->first()->jumlah_barang @endphp
+                                @endif
+                                @if ($stock == 0)
+                                    <p class="flex justify-end mr-4 text-red-600 font-semibold text-sm">0 Stock: Sold Out</p>
+                                @else
+                                <p class="flex justify-end mr-4 text-green-600 font-semibold text-sm">{{ $stock }} Stock: Tersedia</p>
+                                @endif
+
                                 <div class="flex items-center justify-end mt-4 mr-10 gap-4">
                                     <!-- Tombol Kurang -->
                                     <button id="decrease-{{ $i }}"  type="button"
@@ -149,7 +170,7 @@
     <!-- Modal -->
     <div id="imageModal" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 flex items-center justify-center hidden">
         <div class="relative bg-white p-3 rounded-xl">
-            <img id="modalImage" src="" alt="Gambar Besar" class="max-w-full max-h-full">
+            <img id="modalImage" src="" alt="Gambar Besar" class="max-w-60 max-h-full">
             <button class="absolute top-2 right-2 bg-black opacity-50 text-white px-2 py-1 rounded" onclick="hideModal()">X</button>
         </div>
     </div>
