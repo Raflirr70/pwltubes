@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use App\Models\BarangGudang;
+use App\Models\BeliBarang;
 use App\Models\Gudang;
 use Illuminate\Http\Request;
 
@@ -29,6 +30,14 @@ class BarangGudangController extends Controller
             'id_barang' => 'required',
             'id_gudang' => 'required',
             'jumlah_barang' => 'required'
+        ]);
+        $barang = Barang::where('id', $validated['id_barang'])->first();
+
+        BeliBarang::create([
+            'id_barang' => $validated['id_barang'],
+            'id_gudang' => $validated['id_gudang'],
+            'jumlah_barang'=> $validated['jumlah_barang'],
+            'total_harga'=> ($barang->harga_barang * $validated['jumlah_barang']) - ($barang->harga_barang * $validated['jumlah_barang'] * 0.10),
         ]);
 
         $baranggudangs = BarangGudang::where('id_barang', $validated['id_barang'])->where('id_gudang', $validated['id_gudang'])->first();

@@ -26,45 +26,60 @@
                     @endif
                 </div>
 
-                {{-- Pemiliki Dan Manager --}}
-                @if ( Auth::user()->id_role == 1 || Auth::user()->id_role == 2)
+                {{-- Fitur Halaman Pegawai --}}
+                @if ( Auth::user()->id_role <= 2)
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('user')" :active="request()->routeIs('user')">
                             {{ __('Pegawai') }}
                         </x-nav-link>
                     </div>
+                @endif
+
+                {{-- Fitur Halaman Toko --}}
+                @if ( Auth::user()->id_role <= 2)
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('toko')" :active="request()->routeIs('toko')">
                             {{ __('Toko') }}
                         </x-nav-link>
                     </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('indexbarang')" :active="request()->routeIs('indexbarang')">
-                            {{ __('Barang') }}
-                        </x-nav-link>
-                    </div>  
+                @endif
 
-                {{-- Supervisor --}}
-                @elseif (Auth::user()->id_role == 3)
+                {{-- Fitur Halaman Barang --}}
+                @if ( Auth::user()->id_role <= 3)
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('indexbarang')" :active="request()->routeIs('indexbarang')">
                             {{ __('Barang') }}
                         </x-nav-link>
-                    </div>
-                
-                {{-- Kasir --}}
-                @elseif (Auth::user()->id_role == 4)
+                    </div> 
+                @endif
+
+                {{-- Fitur Halaman Pesanan --}}
+                @if (Auth::user()->id_role == 4)
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('pesanan')" :active="request()->routeIs('pesanan')">
                             {{ __('Pesanan') }}
                         </x-nav-link>
                     </div>
+                @endif
+
+                {{-- Fitur Halaman LogPesanan --}}
+                @if (Auth::user()->id_role == 4 || Auth::user()->id_role == 2 || Auth::user()->id_role == 1)
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('logpesanan')" :active="request()->routeIs('logpesanan')">
                             {{ __('Log Pesanan') }}
                         </x-nav-link>
                     </div>
                 @endif
+
+                {{-- Fitur Halaman LogBeliBarang --}}
+                @if (Auth::user()->id_role == 3 || Auth::user()->id_role == 2 || Auth::user()->id_role == 1)
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('logbelibarang')" :active="request()->routeIs('logbelibarang')">
+                            {{ __('logbelibarang') }}
+                        </x-nav-link>
+                    </div>
+                @endif
+
             </div>
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">

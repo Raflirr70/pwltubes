@@ -1,3 +1,6 @@
+@php
+    use \App\Models\Barang;
+@endphp
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -20,13 +23,13 @@
                         <div class="max-w-xl">
                             <x-input-label for="id_barang" value="Barang" />
                             <x-select-input id="id_barang" name="id_barang" class="mt-1 block w-full" required>
-                                <option value="">Open this select menu</option>
                                 @foreach ($barangs as $key => $value)
-                                    @if (old('id_barang') == $key)
-                                        <option value="{{ $key }}" selected>{{ $value }}</option>
-                                    @else
-                                        <option value="{{ $key }}" selected>{{ $value }}</option>
-                                    @endif
+                                    @php
+                                        $hargaBarang = Barang::where('id', $key)->first()->harga_barang - (0.10 * Barang::where('id', $key)->first()->harga_barang);
+                                    @endphp
+                                    <option value="{{ $key }}" {{ old('id_barang') == $key ? 'selected' : '' }}>
+                                        {{ $value }} - ${{ number_format($hargaBarang, 2) }}
+                                    </option>
                                 @endforeach
                             </x-select-input>
                         </div>

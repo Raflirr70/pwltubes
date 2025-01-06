@@ -22,11 +22,11 @@
                             @foreach ($transaksis as $transaksi)
                                 @php $i ++; @endphp
                                 <tr>
-                                    <td class="px-2 py-2 border-b border-r ">{{ $i }}</td>
-                                    <td class="px-4 py-2 border-b border-r">{{ $transaksi->id }}</td>
-                                    <td class="px-4 py-2 border-b border-r">{{ $transaksi->total_barang }}</td>
-                                    <td class="px-4 py-2 border-b border-r">{{ $transaksi->total_harga }}</td>
-                                    <td class="px-4 py-2 border-b border-r">{{ $transaksi->created_at}}</td>
+                                    <td class="px-2 py-2 border-b border-r text-center">{{ $i }}</td>
+                                    <td class="px-4 py-2 border-b border-r text-center">{{ $transaksi->id }}</td>
+                                    <td class="px-4 py-2 border-b border-r text-center">{{ $transaksi->total_barang }} unit</td>
+                                    <td class="px-4 py-2 border-b border-r text-right">{{ $transaksi->total_harga }}.00 $</td>
+                                    <td class="px-4 py-2 border-b border-r text-center">{{ $transaksi->created_at}}</td>
                                     <td class="px-4 py-2 border-b border-r w-20">
                                         <div class="flex flex-row gap-4">
                                             <form method="POST" action="{{ route('pesananterima') }}">

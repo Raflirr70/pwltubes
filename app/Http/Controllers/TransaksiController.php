@@ -23,7 +23,11 @@ class TransaksiController extends Controller
     }
     public function log()
     {
-        $transaksis = Transaksi::where('id_toko', Auth::user()->id_toko)->where('status', 1)->get();
+        if(Auth::user()->id == 1){
+            $transaksis = Transaksi::where('status', 1)->get();
+        }else{
+            $transaksis = Transaksi::where('id_toko', Auth::user()->id_toko)->where('status', 1)->get();
+        }
         $jualbarangs = JualBarang::whereIn('id_transaksi', $transaksis->pluck('id'))->get();
         $barangs = Barang::all();
         

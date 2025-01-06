@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\BarangGudangController;
+use App\Http\Controllers\BeliBarangController;
 use App\Http\Controllers\JualBarangController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TokoController;
@@ -40,6 +41,7 @@ Route::post('/pesanan/terima', [TransaksiController::class, 'terima'])->name('pe
 Route::post('/pesanan/delete', [TransaksiController::class, 'delete'])->name('pesanandelete');
 
 Route::get('/logpesanan', [TransaksiController::class, 'log'])->name('logpesanan');
+Route::get('/logbelibarang', [BeliBarangController::class, 'index'])->name('logbelibarang');
 
 Route::get('/tambahpegawai', [UserController::class, 'view'])->name('tambahpegawai');
 Route::get('/users/pdf', [UserController::class, 'generatePDF'])->name('users.pdf');

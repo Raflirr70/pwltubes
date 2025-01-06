@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Barang;
 use App\Models\Gudang;
 use App\Models\BarangGudang;
+use App\Models\BeliBarang;
 use Illuminate\Support\Facades\Auth;
 
 class BarangController extends Controller
@@ -22,6 +23,9 @@ class BarangController extends Controller
 
     public function store(Request $request)
     {
+        
+
+
         $validated = $request->validate([
             'name' => 'required|max:255',
             'harga_barang' => 'required|integer',
@@ -55,12 +59,13 @@ class BarangController extends Controller
             $gudangs = Gudang::where('id_toko', auth::user()->id_toko)->get();
             $baranggudangs = BarangGudang::where('id_gudang', $gudangs->pluck('id'))->get();
             $barangs = Barang::all();
+        
         }else{
             $gudangs = Gudang::all();
             $baranggudangs = BarangGudang::all();
             $barangs = Barang::all();
         }
-
+        
         return view('barang.indexbarang', compact('barangs', 'baranggudangs', 'gudangs'));
     }
 }

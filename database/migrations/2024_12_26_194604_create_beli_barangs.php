@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('id_barang')->unsigned();
             $table->bigInteger('id_gudang')->unsigned();
-            $table->string('nama');
-            // $table->integer('jumlah_barang');
+            $table->integer('jumlah_barang');
             $table->decimal('total_harga',10,2);
             $table->timestamps();
 
