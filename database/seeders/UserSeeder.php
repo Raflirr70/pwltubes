@@ -20,8 +20,8 @@ class UserSeeder extends Seeder
         //pemilik
         User::create([
             'username' => 'pemilik',
-            'firstname' => 'Rafli',
-            'lastname' => 'Radiansyah',
+            'firstname' => 'Jayusman',
+            'lastname' => '',
             'id_toko' => 1,
             'id_role' => 1,
             'email' => 'pemilik@gmail.com',
