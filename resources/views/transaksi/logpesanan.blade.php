@@ -2,9 +2,30 @@
     use App\Models\Toko ;
 @endphp
 <x-app-layout>
+    <x-slot name="header">
+        <div class="flex">
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight uppercase">
+                {{ Auth::user()->toko->name}}
+            </h2>
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight uppercase ml-20">
+                |
+            </h2>
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight uppercase ml-5">
+                {{ Auth::user()->role->name}}
+            </h2>
+        </div>
+    </x-slot>
     <div class="flex mt-10">
         {{-- left card --}}
         <div class="w-full sm:px-6 lg:px-8 h-full">
+            <div class="flex justify-end mx-5">
+                <a href="{{ route('logpesanan.pdf') }}" class="flex w-40 justify-center bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-600">
+                    Cetak PDF
+                </a>
+            </div>
+            <div class="text-4xl flex w-full justify-center">
+                <h1> Riwayat Transaksi <h1>
+            </div>
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg min-h-[460px]">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     @php $ii = 0; @endphp

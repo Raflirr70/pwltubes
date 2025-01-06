@@ -15,6 +15,11 @@
     <div class="flex mt-10">
         {{-- left card --}}
         <div class="w-full sm:px-6 lg:px-8 h-full">
+            <div class="flex justify-end mx-5">
+                <a href="{{ route('toko.pdf') }}" class="flex w-40 justify-center bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-600">
+                    Cetak PDF
+                </a>
+            </div>
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg min-h-[460px]">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     @if (Auth::user()->id == 1)

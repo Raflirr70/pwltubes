@@ -14,6 +14,7 @@ class BarangGudangController extends Controller
         $baranggudangs = BarangGudang::all();
         return view('baranggudang.index', compact('baranggudangs'));
     }
+    
 
     public function create()
     {

@@ -7,6 +7,8 @@ use App\Models\Barang;
 use App\Models\Gudang;
 use App\Models\BarangGudang;
 use App\Models\BeliBarang;
+use App\Models\Toko;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 
 class BarangController extends Controller
@@ -23,9 +25,6 @@ class BarangController extends Controller
 
     public function store(Request $request)
     {
-        
-
-
         $validated = $request->validate([
             'name' => 'required|max:255',
             'harga_barang' => 'required|integer',
@@ -67,5 +66,26 @@ class BarangController extends Controller
         }
         
         return view('barang.indexbarang', compact('barangs', 'baranggudangs', 'gudangs'));
+    }
+    public function generatePDF()
+    {
+        $nama = Toko::where('id', Auth::user()->id_toko)->first()->name;
+        if(auth::user()->id != 1){
+            $gudangs = Gudang::where('id_toko', auth::user()->id_toko)->get();
+            $baranggudangs = BarangGudang::where('id_gudang', $gudangs->pluck('id'))->get();
+            $barangs = Barang::all();
+        
+        }else{
+            $gudangs = Gudang::all();
+            $baranggudangs = BarangGudang::all();
+            $barangs = Barang::all();
+        }
+        $pdf = Pdf::loadView('barang.pdfbarang', compact('baranggudangs', 'gudangs', 'barangs'));
+
+        if(Auth::user()->id == 1){
+            return $pdf->download('InformasiBarang.pdf');
+        }else{
+            return $pdf->download('InformasiBarang'.$nama.'.pdf');
+        }
     }
 }

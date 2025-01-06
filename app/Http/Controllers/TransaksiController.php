@@ -7,6 +7,7 @@ use App\Models\BarangGudang;
 use App\Models\JualBarang;
 use App\Models\Toko;
 use App\Models\Transaksi;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,6 +34,26 @@ class TransaksiController extends Controller
         
         return view('transaksi.logpesanan', compact('transaksis', 'jualbarangs', 'barangs'));
     }
+
+    public function generatePDF()
+    {
+        $nama = Toko::where('id', Auth::user()->id_toko)->first()->name;
+        if(Auth::user()->id == 1){
+            $transaksis = Transaksi::where('status', 1)->get();
+        }else{
+            $transaksis = Transaksi::where('id_toko', Auth::user()->id_toko)->where('status', 1)->get();
+        }
+        $jualbarangs = JualBarang::whereIn('id_transaksi', $transaksis->pluck('id'))->get();
+        $barangs = Barang::all();
+        $pdf = Pdf::loadView('transaksi.logpesananpdf', compact('transaksis', 'jualbarangs', 'barangs'));
+
+        if(Auth::user()->id == 1){
+            return $pdf->download('InformasiTransaksi.pdf');
+        }else{
+            return $pdf->download('InformasiTransaksi'.$nama.'.pdf');
+        }
+    }
+
     public function pesanan(){
         $transaksis = Transaksi::where('id_toko', Auth::user()->id_toko)->where('status', 0)->get();
         return view('transaksi.pesanan', compact('transaksis'));

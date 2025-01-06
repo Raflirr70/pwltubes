@@ -40,8 +40,10 @@ Route::get('/pesanan', [TransaksiController::class, 'pesanan'])->name('pesanan')
 Route::post('/pesanan/terima', [TransaksiController::class, 'terima'])->name('pesananterima');
 Route::post('/pesanan/delete', [TransaksiController::class, 'delete'])->name('pesanandelete');
 
-Route::get('/logpesanan', [TransaksiController::class, 'log'])->name('logpesanan');
+Route::get('/transaksi/logpesanan', [TransaksiController::class, 'log'])->name('logpesanan');
+Route::get('/transaksi/logpesananpdf', [TransaksiController::class, 'generatePDF'])->name('logpesanan.pdf');
 Route::get('/logbelibarang', [BeliBarangController::class, 'index'])->name('logbelibarang');
+Route::get('/logbelibarangpdf', [BeliBarangController::class, 'generatePDF'])->name('logbelibarang.pdf');
 
 Route::get('/tambahpegawai', [UserController::class, 'view'])->name('tambahpegawai');
 Route::get('/users/pdf', [UserController::class, 'generatePDF'])->name('users.pdf');
@@ -49,12 +51,16 @@ Route::get('/users/pdf', [UserController::class, 'generatePDF'])->name('users.pd
 Route::get('/indexbarang', [BarangController::class, 'indexbarang'])->name('indexbarang');
 Route::get('/addbarang', [BarangController::class, 'create'])->name('barang.create');
 Route::post('/barangstore', [BarangController::class, 'store'])->name('barang.store');
+Route::get('/barang/pdfbarang', [BarangController::class, 'generatePDF'])->name('barang.pdf');
+
+
 Route::get('/addjumlah', [BarangGudangController::class, 'create'])->name('jumlah.create');
 Route::post('/jumlahstore', [BarangGudangController::class, 'store'])->name('jumlah.store');
 Route::get('/indexbaranggudang', [BarangGudangController::class, 'indexbaranggudang'])->name('indexbaranggudang');
 
 Route::get('/toko', [TokoController::class, 'index'])->name('toko');
 Route::get('/tokos', [TokoController::class, 'index'])->name('toko.index');
+Route::get('/toko/pdftoko', [TokoController::class, 'generatePDF'])->name('toko.pdf');
 Route::get('/barang', [TokoController::class, 'barang'])->name('barang');
 
 
