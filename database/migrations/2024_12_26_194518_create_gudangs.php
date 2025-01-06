@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('gudangs', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_toko')->unsigned();
-            $table->integer('jumlah_barang');
+            // $table->integer('jumlah_barang');
             $table->decimal('total_harga',10,2);
             $table->timestamps();
 

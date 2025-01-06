@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\BarangGudang;
 use App\Models\JualBarang;
+use App\Models\Toko;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,6 +38,19 @@ class TransaksiController extends Controller
         $transaksis->update([
             'status' => 1,
         ]);
+
+        $jualbarangs = JualBarang::where('id_transaksi', $transaksis->id)->get();
+        foreach($jualbarangs as $jualbarang){
+            $baranggudangs = BarangGudang::where('id_barang', $jualbarang->id_barang)->where('id_gudang', $transaksis->id_toko)->first();
+            $baranggudangs->update([
+                'jumlah_barang' => $baranggudangs->jumlah_barang - $jualbarang->jumlah_barang
+            ]);
+        }
+        $tokos = Toko::where('id', $transaksis->id_toko)->first();
+        $tokos->update([
+            'pendapatan' => $tokos->pendapatan + $transaksis->total_harga
+        ]);
+
         $transaksis = Transaksi::where('id_toko', Auth::user()->id_toko)
                            ->where('status', 0)
                            ->get();

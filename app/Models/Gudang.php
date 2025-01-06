@@ -10,7 +10,7 @@ class Gudang extends Model
     use HasFactory;
     protected $fillable = [
         'id_toko',
-        'jumlah_barang',
+        // 'jumlah_barang',
         'total_harga',
     ];
 

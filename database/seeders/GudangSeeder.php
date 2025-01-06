@@ -16,7 +16,7 @@ class GudangSeeder extends Seeder
         for($i=1; $i<=5; $i++){
             Gudang::create([
                 'id_toko' => $i,
-                'jumlah_barang' => 1000,
+                // 'jumlah_barang' => 1000,
                 'total_harga' => 100000,
             ]);
         }

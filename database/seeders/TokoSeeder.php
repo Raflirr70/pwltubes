@@ -16,22 +16,27 @@ class TokoSeeder extends Seeder
         Toko::create([
             'name' => 'Cipanas',
             'pendapatan' => 0,
+            'pengeluaran' => 100000,
         ]);
         Toko::create([
             'name' => 'Cianjur',
             'pendapatan' => 0,
+            'pengeluaran' => 100000,
         ]);
         Toko::create([
             'name' => 'Bandung',
             'pendapatan' => 0,
+            'pengeluaran' => 100000,
         ]);
         Toko::create([
             'name' => 'Jakarta',
             'pendapatan' => 0,
+            'pengeluaran' => 100000,
         ]);
         Toko::create([
             'name' => 'Bali',
             'pendapatan' => 0,
+            'pengeluaran' => 100000,
         ]);
     }
 }

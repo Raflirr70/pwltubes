@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->decimal('pendapatan',10,2);
+            $table->decimal('pengeluaran',10,2);
             $table->timestamps();
         });
     }
