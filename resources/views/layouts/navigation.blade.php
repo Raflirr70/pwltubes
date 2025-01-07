@@ -45,7 +45,7 @@
                 @endif
 
                 {{-- Fitur Halaman Barang --}}
-                @if ( Auth::user()->id_role <= 3)
+                @if ( Auth::user()->id_role <= 3 || Auth::user()->id_role == 5)
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('indexbarang')" :active="request()->routeIs('indexbarang')">
                             {{ __('Barang') }}

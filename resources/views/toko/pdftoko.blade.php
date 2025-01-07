@@ -39,13 +39,13 @@
                                 </tr>
                             @endif
                         @endforeach
-                        <tr>
+                        {{-- <tr>
                             <td colspan="4">Total</td>
                             <td>100 $</td>
                             @if ($toko->id == Auth::user()->id_role-1)
                                 <td></td>
                             @endif
-                        </tr>
+                        </tr> --}}
                     </tbody>
                 </table>
             </div>

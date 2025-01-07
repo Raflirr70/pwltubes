@@ -30,8 +30,8 @@
                 <option value="1">Cipanas</option>
                 <option value="2">Cianjur</option>
                 <option value="3">Bandung</option>
-                <option value="4">Depok</option>
-                <option value="5">Jakarta</option>
+                <option value="4">Jakarta</option>
+                <option value="5">Bali</option>
             </select>
             <x-input-error :messages="$errors->get('kota')" class="mt-2" />
         </div>
