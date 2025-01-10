@@ -15,4 +15,9 @@ class Transaksi extends Model
         'total_harga',
         'status',
     ];
+
+        public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
 }
