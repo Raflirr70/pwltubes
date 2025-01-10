@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\BeliBarang;
 use App\Models\JualBarang;
 use App\Models\Transaksi;
 use Illuminate\Http\RedirectResponse;
@@ -19,6 +20,7 @@ class JualBarangController extends Controller
             'total_harga'=> 0,
             
         ]);
+
         $total_barang = 0;
         $total_harga = 0;
 
@@ -35,6 +37,14 @@ class JualBarangController extends Controller
                 ]);
                 $total_barang += $qty;
                 $total_harga += $request->input('hargabarang' . $i) * $qty;
+
+                $idgudang = $request->idtoko;
+                BeliBarang::create([
+                    'id_gudang' => $idgudang,
+                    'id_barang' => $request->input('idbarang' . $i),
+                    'jumlah_barang' => $qty,
+                    'total_harga' => $request->input('hargabarang' . $i) * $qty,
+                ]);
             }
         }
         $transaksi->update([
