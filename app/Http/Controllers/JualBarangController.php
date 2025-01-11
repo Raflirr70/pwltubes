@@ -37,14 +37,6 @@ class JualBarangController extends Controller
                 ]);
                 $total_barang += $qty;
                 $total_harga += $request->input('hargabarang' . $i) * $qty;
-
-                $idgudang = $request->idtoko;
-                BeliBarang::create([
-                    'id_gudang' => $idgudang,
-                    'id_barang' => $request->input('idbarang' . $i),
-                    'jumlah_barang' => $qty,
-                    'total_harga' => $request->input('hargabarang' . $i) * $qty,
-                ]);
             }
         }
         $transaksi->update([

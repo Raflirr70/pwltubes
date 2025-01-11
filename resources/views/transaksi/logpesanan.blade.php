@@ -44,12 +44,15 @@
                         </thead>
                         @foreach ($transaksis as $transaksi)
                             <tbody>
-                                @php $ii++; @endphp
+                                @php 
+                                    $ii++;
+                                @endphp
                                 <tr>
                                     <td class="px-2 py-2 border border-black text-center">{{ $ii }}</td>
                                     <td class="px-4 py-2 border border-black text-center">{{ $transaksi->id }}</td>
                                     <td class="px-4 py-2 border border-black text-center">{{ Toko::where('id', $transaksi->id_toko)->first()->name }}</td>
                                     <td class="px-2 py-2 border border-black text-center">{{ $transaksi->user->firstname. ' ' .$transaksi->user->lastname}}</td>
+                                    <td class="px-4 py-2 border border-black text-center">{{ $nama_kasir }}</td>
                                     <td class="px-4 py-2 border border-black text-center">{{ $transaksi->total_barang }}</td>
                                     <td class="px-2 py-2 border border-black">
                                         <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-lg">

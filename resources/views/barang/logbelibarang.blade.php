@@ -36,6 +36,7 @@
                             <thead>
                                 <tr>
                                     <th class="px-4 py-2 border-r border-b border-gray-600 bg-slate-400">No</th>
+                                    <th class="px-4 py-2 border-r border-b border-gray-600 bg-slate-400">Nama Supervisor</th>
                                     <th class="px-4 py-2 border-r border-b border-gray-600 bg-slate-400">ID Pembelian</th>
                                     <th class="px-4 py-2 border-r border-b border-gray-600 bg-slate-400">Nama Barang</th>
                                     <th class="px-4 py-2 border-r border-b border-gray-600 bg-slate-400">Jumlah Barang</th>
@@ -53,6 +54,7 @@
                                     @endphp
                                     <tr>
                                         <td class="px-4 py-2 border-gray-600 border-b border-r text-center">{{ $loop->iteration }}</td>
+                                        <td class="px-4 py-2 border-gray-600 border-b border-r text-center">{{ Auth::user()->firstname.' '.Auth::user()->lastname }}</td>
                                         <td class="px-4 py-2 border-gray-600 border-b border-r text-center">{{ $belibarang->id }}</td>
                                         <td class="px-4 py-2 border-gray-600 border-b border-r">{{ $barang->name }}</td>
                                         <td class="px-4 py-2 border-gray-600 border-b border-r text-center">{{ $belibarang->jumlah_barang }} unit</td>
