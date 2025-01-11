@@ -16,6 +16,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th>Nama Supervisor</th>
                                 <th>ID Pembelian</th>
                                 <th>Nama Barang</th>
                                 <th>Jumlah Barang</th>
@@ -33,6 +34,7 @@
                                 @endphp
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
+                                    <td>{{ Auth::user()->firstname.' '.Auth::user()->lastname }}</td>
                                     <td>{{ $belibarang->id }}</td>
                                     <td>{{ $barang->name }}</td>
                                     <td>{{ $belibarang->jumlah_barang }} unit</td>
