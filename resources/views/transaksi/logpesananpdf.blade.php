@@ -17,6 +17,8 @@
                             <th>No</th>
                             <th>No Transaksi</th>
                             <th>Nama Cabang</th>
+                            <th>Nama Pembeli</th>
+                            <th>Nama Kasir</th>
                             <th>Jumlah Barang</th>
                             <th>Datar Barang</th>
                             <th>Total Harga</th>
@@ -30,6 +32,8 @@
                                 <td>{{ $ii }}</td>
                                 <td>{{ $transaksi->id }}</td>
                                 <td>{{ Toko::where('id', $transaksi->id_toko)->first()->name }}</td>
+                                <td>{{ $transaksi->user->firstname. ' ' .$transaksi->user->lastname}}</td>
+                                <td>{{ Auth::user()->firstname.' '.Auth::user()->lastname }}</td>
                                 <td>{{ $transaksi->total_barang }}</td>
                                 <td>
                                     <table border="1">

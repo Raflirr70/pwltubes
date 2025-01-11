@@ -12,6 +12,7 @@
                                 <th class="px-2 py-2 border-r border-b border-gray-300 bg-slate-400 ">No</th>
                                 <th class="px-4 py-2 border-r border-b border-gray-300 bg-slate-400 ">No Transaksi</th>
                                 <th class="px-4 py-2 border-r border-b border-gray-300 bg-slate-400 ">Nama Pembeli</th>
+                                <th class="px-4 py-2 border-r border-b border-gray-300 bg-slate-400 ">Nama Kasir</th>
                                 <th class="px-4 py-2 border-r border-b border-gray-300 bg-slate-400 ">Jumlah Barang</th>
                                 <th class="px-4 py-2 border-r border-b border-gray-300 bg-slate-400 ">Total Harga</th>
                                 <th class="px-4 py-2 border-r border-b border-gray-300 bg-slate-400 ">Date</th>
@@ -26,6 +27,7 @@
                                     <td class="px-2 py-2 border-b border-r text-center">{{ $i }}</td>
                                     <td class="px-4 py-2 border-b border-r text-center">{{ $transaksi->id }}</td>
                                     <td class="px-4 py-2 border-b border-r text-center">{{ $transaksi->user->firstname. ' ' .$transaksi->user->lastname}}</td>
+                                    <td class="px-4 py-2 border-b border-r text-center">{{ Auth::user()->firstname.' '.Auth::user()->lastname }}</td>
                                     <td class="px-4 py-2 border-b border-r text-center">{{ $transaksi->total_barang }} unit</td>
                                     <td class="px-4 py-2 border-b border-r text-right">{{ $transaksi->total_harga }}.00 $</td>
                                     <td class="px-4 py-2 border-b border-r text-center">{{ $transaksi->created_at}}</td>

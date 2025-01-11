@@ -36,6 +36,7 @@
                                 <th class="px-4 py-2 border border-black bg-slate-400 ">No Transaksi</th>
                                 <th class="px-4 py-2 border border-black bg-slate-400 ">Nama Cabang</th>
                                 <th class="px-4 py-2 border border-black bg-slate-400 ">Nama Pembeli</th>
+                                <th class="px-4 py-2 border border-black bg-slate-400 ">Nama Kasir</th>
                                 <th class="px-4 py-2 border border-black bg-slate-400 ">Jumlah Barang</th>
                                 <th class="px-4 py-2 border border-black bg-slate-400 ">Datar Barang</th>
                                 <th class="px-4 py-2 border border-black bg-slate-400 ">Total Harga</th>
@@ -52,7 +53,7 @@
                                     <td class="px-4 py-2 border border-black text-center">{{ $transaksi->id }}</td>
                                     <td class="px-4 py-2 border border-black text-center">{{ Toko::where('id', $transaksi->id_toko)->first()->name }}</td>
                                     <td class="px-2 py-2 border border-black text-center">{{ $transaksi->user->firstname. ' ' .$transaksi->user->lastname}}</td>
-                                    <td class="px-4 py-2 border border-black text-center">{{ $nama_kasir }}</td>
+                                    <td class="px-2 py-2 border border-black text-center">{{ Auth::user()->firstname.' '.Auth::user()->lastname }}</td>
                                     <td class="px-4 py-2 border border-black text-center">{{ $transaksi->total_barang }}</td>
                                     <td class="px-2 py-2 border border-black">
                                         <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-lg">
