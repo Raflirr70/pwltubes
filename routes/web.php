@@ -62,6 +62,7 @@ Route::get('/toko', [TokoController::class, 'index'])->name('toko');
 Route::get('/tokos', [TokoController::class, 'index'])->name('toko.index');
 Route::get('/toko/pdftoko', [TokoController::class, 'generatePDF'])->name('toko.pdf');
 Route::get('/barang', [TokoController::class, 'barang'])->name('barang');
+Route::get('/Toko/liatinformasi', [BarangController::class, 'liatinformasi'])->name('toko.liatinformasi');
 
 
 Route::get('/user', [UserController::class, 'index'])->name('user');

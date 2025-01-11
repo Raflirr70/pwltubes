@@ -88,4 +88,19 @@ class BarangController extends Controller
             return $pdf->download('InformasiBarang'.$nama.'.pdf');
         }
     }
+
+    public function liatinformasi(Request $request)
+    {
+        $tokoId = $request->input('toko');
+        $gudangs = Gudang::where('id_toko', $tokoId)->get();
+
+        if ($gudangs->isEmpty()) {
+            return redirect()->back()->with('error', 'Tidak ada gudang untuk toko ini.');
+        }
+        
+        $baranggudangs = BarangGudang::whereIn('id_gudang', $gudangs->pluck('id'))->get();
+        $barangs = Barang::whereIn('id', $baranggudangs->pluck('id_barang'))->get();
+
+        return view('barang.indexbarang', compact('barangs', 'baranggudangs', 'gudangs'));
+    }
 }

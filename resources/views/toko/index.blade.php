@@ -56,7 +56,14 @@
                                         <td class="text-right px-4 py-2 border-gray-600 border-b border-r"> {{ $toko->pendapatan}} $</td>
                                         <td class="text-right px-4 py-2 border-gray-600 border-b border-r"> @include('toko.pendapatanbersih', ['idtoko' => $toko->id]).00 $</td>
                                         <td class="text-right px-4 py-2 border-gray-600 border-b border-r"> @include('toko.biayahilang', ['idtoko' => $toko->id]).00 $</td>
-                                        <td class="text-center px-4 py-2 border-gray-600 border-b border-r"><a href="{{ route('toko.index', $toko->id) }}" class="btn btn-primary bg-green-700 text-white py-1 px-3 rounded-md hover:text-lg">Lihat</a></td>
+                                        <td class="text-center px-4 py-2 border-gray-600 border-b border-r">
+                                            <form method="get" action="{{ route('toko.liatinformasi') }}" enctype="multipart/form-data">
+                                                @csrf
+                                                <input type="hidden" name="toko" value="{{ $toko->id }}">
+                                                <button type="submit" class="btn btn-primary bg-green-700 text-white py-1 px-3 rounded-md hover:text-lg">Lihat</button>
+                                            </form>
+                                        </td>
+
                                         @php
                                             $biayaHilang = view('toko.biayahilang',['idtoko' => $toko->id])->render();
                                             $total += (float) $biayaHilang;
@@ -85,7 +92,6 @@
         <div class="w-1/3 mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg min-h-[460px]">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{-- You can add more content for the right card if needed --}}
                 </div>
             </div>
         </div>
